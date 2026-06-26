@@ -14,16 +14,19 @@ async function seed() {
 
     // Load JSON data
     const productsData = JSON.parse(
-      fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, 'data/products.json'), 'utf8')
     )
 
     const ordersData = JSON.parse(
-      fs.readFileSync(path.join(__dirname, '../data/orders.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, 'data/orders.json'), 'utf8')
     )
 
-    // Seed products
+    // Seed products. The database assigns each product a brand-new id, so we
+    // record a map from the JSON's product id -> the real id the DB created.
+    // Orders below use this map so their item references never go stale.
+    const productIdMap = {}
     for (const product of productsData.products) {
-      await prisma.product.create({
+      const created = await prisma.product.create({
         data: {
           name: product.name,
           description: product.description,
@@ -32,6 +35,7 @@ async function seed() {
           category: product.category,
         },
       })
+      productIdMap[product.id] = created.id
     }
 
     // Seed orders and items
@@ -39,12 +43,13 @@ async function seed() {
       const createdOrder = await prisma.order.create({
         data: {
           customer: order.customer_id,
+          email: order.email,
           totalPrice: order.total_price,
           status: order.status,
           createdAt: new Date(order.created_at),
           orderItems: {
             create: order.items.map((item) => ({
-              productId: item.product_id,
+              productId: productIdMap[item.product_id],
               quantity: item.quantity,
               price: item.price,
             })),

@@ -5,14 +5,29 @@
   display: flex;
   flex-direction: column;
   border: solid 1px var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ProductCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 .ProductCard .media {
   height: 250px;
   width: 100%;
+  overflow: hidden;
 }
 .ProductCard .media img {
-  height: 250px;
-  width: 248px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.ProductCard:hover .media img {
+  transform: scale(1.04);
 }
 .ProductCard .product-info {
   flex: 1;
@@ -67,6 +82,7 @@
   width: 20px;
   height: 20px;
   border: solid 1px var(--bright-green);
+  border-radius: 50%;
   color: var(--bright-green);
   cursor: pointer;
   display: flex;
@@ -74,4 +90,9 @@
   justify-content: center;
   padding: 5px;
   margin: 10px 5px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ProductCard .actions .buttons i:hover {
+  background: var(--bright-green);
+  color: var(--pure-white);
 }

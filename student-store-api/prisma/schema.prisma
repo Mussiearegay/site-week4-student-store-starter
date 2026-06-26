@@ -12,3 +12,35 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  imageUrl    String
+  category    String
+  orderItems  OrderItem[] // back-relation: a product can appear in many order items
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  customer   Int
+  email      String?     // email of the person who placed the order (used to filter orders)
+  totalPrice Float
+  status     String      @default("pending")
+  createdAt  DateTime    @default(now())
+  orderItems OrderItem[] // back-relation: an order is made up of many order items
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  price     Float   // snapshot of the product's price at the time of purchase
+  // Relationship to Order — deleting the order cascades to (deletes) its items
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   Int
+  // Relationship to Product — deleting the product cascades to (deletes) its items
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+}

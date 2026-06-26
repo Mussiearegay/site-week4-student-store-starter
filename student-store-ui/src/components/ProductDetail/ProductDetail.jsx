@@ -5,12 +5,34 @@ import NotFound from "../NotFound/NotFound";
 import { formatPrice } from "../../utils/format";
 import "./ProductDetail.css";
 
+// Base URL of the backend API (same Express server App.jsx talks to).
+const API_BASE_URL = "http://localhost:3000";
+
 function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
-  
+
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+
+  // Fetch this single product whenever the id in the URL changes.
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsFetching(true);
+      setError(null);
+      try {
+        const { data } = await axios.get(`${API_BASE_URL}/products/${productId}`);
+        // The API returns `imageUrl`; the UI reads `image_url`. Map it at the boundary.
+        setProduct({ ...data, image_url: data.imageUrl });
+      } catch (err) {
+        setError("Failed to load product.");
+      } finally {
+        setIsFetching(false);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
 
 
   if (error) {

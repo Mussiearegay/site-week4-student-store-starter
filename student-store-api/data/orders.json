@@ -3,6 +3,7 @@
       {
         "order_id": 1,
         "customer_id": 101,
+        "email": "jordan@school.edu",
         "total_price": 89.97,
         "status": "completed",
         "created_at": "2023-04-06T10:00:00Z",
@@ -22,6 +23,7 @@
       {
         "order_id": 2,
         "customer_id": 102,
+        "email": "taylor@school.edu",
         "total_price": 61.98,
         "status": "pending",
         "created_at": "2023-04-07T15:30:00Z",

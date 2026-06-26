@@ -1,26 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   --side-padding: 40px;
   --content-width: 1100px;
-  --dark-blue: #2c4047;
-  --bright-green: #00c385;
-  --pure-white: #fff;
-  --grey-bg: #f7f7f7;
-  --accent-orange: #ff9017;
-  --bright-red: #fe3210;
-  --muted: #969696;
-  --font-dark: #212121;
-  --font-light: #5b5b5b;
-  --border-color: #e4e4e4;
-  --star-color-filled: #e5a800;
+
+  /* Brand palette — deep indigo + coral, a fresh custom theme.
+     The original variable names are kept (e.g. --bright-green) so every
+     existing component picks up the new colors with zero markup changes. */
+  --dark-blue: #1e1b4b;        /* deep indigo, headers/dark surfaces */
+  --bright-green: #6366f1;     /* primary action (indigo) */
+  --primary-hover: #4f46e5;    /* darker indigo for hover states */
+  --pure-white: #ffffff;
+  --grey-bg: #f4f4fb;          /* soft lilac-tinted page background */
+  --accent-orange: #f43f5e;    /* coral accent (badges, quantity) */
+  --bright-red: #e11d48;
+  --muted: #8b8aa7;
+  --font-dark: #1f2030;
+  --font-light: #5b5b6e;
+  --border-color: #e6e6f0;
+  --star-color-filled: #f59e0b;
   --star-color-empty: #cbd4e6;
+
+  /* New design tokens used by the restyled components */
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow-sm: 0 1px 3px rgba(30, 27, 75, 0.08);
+  --shadow-md: 0 6px 20px rgba(30, 27, 75, 0.12);
+  --font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Helvetica Neue", sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--grey-bg);
@@ -48,8 +60,7 @@ ul,
 ol {
   margin: 0;
   padding: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
   color: var(--font-dark);
 }
 

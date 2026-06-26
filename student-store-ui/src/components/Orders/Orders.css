@@ -1,0 +1,100 @@
+.Orders {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.Orders h1 {
+  margin-bottom: 1rem;
+}
+
+.Orders .filter-bar {
+  margin-bottom: 1.5rem;
+}
+
+.Orders .filter-bar input {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-family: var(--font-family);
+}
+.Orders .filter-bar input:focus {
+  outline: none;
+  border-color: var(--bright-green);
+}
+
+.Orders .error {
+  color: #c0392b;
+}
+
+.Orders .empty {
+  color: #777;
+}
+
+.Orders .order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Orders .order-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  background: var(--pure-white);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.Orders .order-row:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.Orders .order-id {
+  font-weight: 600;
+}
+
+.Orders .order-email {
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.Orders .order-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.Orders .order-status {
+  text-transform: capitalize;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.Orders .status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.Orders .status-completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.Orders .order-total {
+  font-weight: 600;
+  text-align: right;
+}

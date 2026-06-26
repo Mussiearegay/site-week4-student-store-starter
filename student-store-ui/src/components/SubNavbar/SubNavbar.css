@@ -43,9 +43,25 @@
   background: var(--bright-green);
   color: white;
   fill: white;
+  border-radius: 0 8px 8px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.SubNavbar .content .orders-link {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--bright-green);
+  color: var(--pure-white);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.SubNavbar .content .orders-link:hover {
+  background: var(--primary-hover);
 }
 .SubNavbar .content .links {
   display: flex;
